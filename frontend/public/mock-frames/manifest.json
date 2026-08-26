@@ -2,31 +2,31 @@
   "frames": [
     {
       "id": "mock-round-01",
-      "label": "Campanha Verão",
+      "label": "Sonia e Lula",
       "shape": "round",
-      "file": "frame-round.png",
-      "thumbnail": "frame-round.png"
+      "file": "frame-round.svg",
+      "thumbnail": "frame-round.svg"
     },
     {
       "id": "mock-square-01",
-      "label": "Evento Tech",
+      "label": "Time 13 e Sonia",
       "shape": "square",
-      "file": "frame-square.png",
-      "thumbnail": "frame-square.png"
+      "file": "frame-square.svg",
+      "thumbnail": "frame-square.svg"
     },
     {
       "id": "mock-round-02",
-      "label": "Pride Month",
+      "label": "Sonia e Lula",
       "shape": "round",
-      "file": "frame-round-2.png",
-      "thumbnail": "frame-round-2.png"
+      "file": "frame-round-2.svg",
+      "thumbnail": "frame-round-2.svg"
     },
     {
       "id": "mock-square-02",
-      "label": "Hackathon 2025",
+      "label": "Time 13 e Sonia",
       "shape": "square",
-      "file": "frame-square-2.png",
-      "thumbnail": "frame-square-2.png"
+      "file": "frame-square-2.svg",
+      "thumbnail": "frame-square-2.svg"
     }
   ]
 }
