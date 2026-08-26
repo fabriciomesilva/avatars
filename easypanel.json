@@ -1,0 +1,28 @@
+{
+  "name": "avatar-app",
+  "description": "Aplicação web para gerar avatares com molduras PNG transparentes (estilo Twibbonize)",
+  "port": 3000,
+  "healthCheck": {
+    "path": "/api/health",
+    "interval": 30,
+    "timeout": 5
+  },
+  "volumes": [
+    {
+      "mountPath": "/app/cache/frames",
+      "name": "frames-cache"
+    }
+  ],
+  "env": [
+    { "key": "PORT", "value": "3000" },
+    { "key": "NODE_ENV", "value": "production" },
+    { "key": "PUBLIC_BASE_URL", "value": "" },
+    { "key": "FRAMES_MANIFEST_URL", "value": "" },
+    { "key": "FRAMES_BASE_URL", "value": "" },
+    { "key": "FRAMES_AUTH_HEADER", "value": "" },
+    { "key": "FRAMES_CACHE_TTL", "value": "3600" },
+    { "key": "ALLOWED_EMBED_ORIGINS", "value": "" },
+    { "key": "MAX_UPLOAD_SIZE_MB", "value": "8" },
+    { "key": "EXPORT_MAX_RESOLUTION", "value": "2048" }
+  ]
+}

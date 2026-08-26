@@ -1,0 +1,161 @@
+.image-uploader {
+  margin-bottom: var(--space-lg);
+}
+
+/* ---- Dropzone ---- */
+.upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-2xl) var(--space-lg);
+  border: 2px dashed var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-dropzone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(124, 92, 252, 0.03));
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.upload-dropzone:hover::before,
+.upload-dropzone.dragging::before {
+  opacity: 1;
+}
+
+.upload-dropzone:hover {
+  border-color: var(--color-border-active);
+  transform: translateY(-1px);
+}
+
+.upload-dropzone.dragging {
+  border-color: var(--color-primary);
+  background: rgba(124, 92, 252, 0.08);
+  box-shadow: var(--shadow-glow);
+}
+
+.upload-dropzone:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+.upload-input-hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---- Upload Icon ---- */
+.upload-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(124, 92, 252, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-light);
+  transition: all var(--transition-normal);
+}
+
+.upload-dropzone:hover .upload-icon-wrapper {
+  background: rgba(124, 92, 252, 0.15);
+  transform: scale(1.05);
+}
+
+.upload-dropzone.dragging .upload-icon-wrapper {
+  background: rgba(124, 92, 252, 0.2);
+  transform: scale(1.1);
+  animation: glow-pulse 1.5s ease-in-out infinite;
+}
+
+/* ---- Text ---- */
+.upload-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.upload-text strong {
+  color: var(--color-primary-light);
+}
+
+.upload-hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* ---- Divider ---- */
+.upload-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.upload-divider::before,
+.upload-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.upload-divider span {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+/* ---- Webcam ---- */
+.upload-webcam-btn {
+  width: 100%;
+}
+
+.webcam-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.webcam-video {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-secondary);
+  transform: scaleX(-1); /* Mirror */
+}
+
+.webcam-actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+/* ---- Error ---- */
+.upload-error {
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}

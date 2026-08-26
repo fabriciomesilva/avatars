@@ -1,0 +1,128 @@
+.crop-canvas-section {
+  margin-bottom: var(--space-lg);
+}
+
+.crop-canvas-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* ---- Canvas ---- */
+.canvas-container {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.canvas-container.round {
+  border-radius: 50%;
+}
+
+.crop-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  display: block;
+  touch-action: none;
+}
+
+.crop-canvas.grabbing {
+  cursor: grabbing;
+}
+
+/* ---- Zoom Controls ---- */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 350px;
+}
+
+.zoom-label {
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.zoom-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  outline: none;
+  cursor: pointer;
+}
+
+.zoom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--color-primary-glow);
+  transition: all var(--transition-fast);
+}
+
+.zoom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 16px var(--color-primary-glow);
+}
+
+.zoom-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px var(--color-primary-glow);
+}
+
+/* ---- Actions ---- */
+.crop-actions {
+  display: flex;
+  gap: var(--space-md);
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* ---- Loading ---- */
+.crop-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-3xl);
+}
+
+.crop-loading p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 480px) {
+  .canvas-container {
+    max-width: 300px;
+  }
+
+  .crop-actions {
+    flex-direction: column-reverse;
+  }
+
+  .crop-actions .btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "avatar-app-backend",
+  "version": "1.0.0",
+  "description": "Backend API para o app de avatares/molduras",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.1",
+    "@fastify/rate-limit": "^10.2.1",
+    "@fastify/static": "^8.0.3",
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

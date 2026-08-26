@@ -1,0 +1,32 @@
+{
+  "frames": [
+    {
+      "id": "mock-round-01",
+      "label": "Campanha Verão",
+      "shape": "round",
+      "file": "frame-round.png",
+      "thumbnail": "frame-round.png"
+    },
+    {
+      "id": "mock-square-01",
+      "label": "Evento Tech",
+      "shape": "square",
+      "file": "frame-square.png",
+      "thumbnail": "frame-square.png"
+    },
+    {
+      "id": "mock-round-02",
+      "label": "Pride Month",
+      "shape": "round",
+      "file": "frame-round-2.png",
+      "thumbnail": "frame-round-2.png"
+    },
+    {
+      "id": "mock-square-02",
+      "label": "Hackathon 2025",
+      "shape": "square",
+      "file": "frame-square-2.png",
+      "thumbnail": "frame-square-2.png"
+    }
+  ]
+}

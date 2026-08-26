@@ -1,0 +1,495 @@
+/* ============================================
+   Design System — Avatar App
+   Premium dark theme with glassmorphism
+   ============================================ */
+
+/* ---- CSS Reset & Variables ---- */
+:root {
+  /* Colors */
+  --color-bg-primary: #0a0a1a;
+  --color-bg-secondary: #12122a;
+  --color-bg-card: rgba(26, 26, 58, 0.6);
+  --color-bg-card-hover: rgba(36, 36, 78, 0.8);
+  --color-bg-glass: rgba(255, 255, 255, 0.04);
+  --color-bg-glass-hover: rgba(255, 255, 255, 0.08);
+
+  --color-primary: #7c5cfc;
+  --color-primary-light: #9d85fd;
+  --color-primary-dark: #5a3de8;
+  --color-primary-glow: rgba(124, 92, 252, 0.3);
+
+  --color-accent: #00d4ff;
+  --color-accent-glow: rgba(0, 212, 255, 0.25);
+
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  --color-text-primary: #f0f0ff;
+  --color-text-secondary: #a0a0c0;
+  --color-text-muted: #6b6b8a;
+
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-active: rgba(124, 92, 252, 0.5);
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 20px var(--color-primary-glow);
+  --shadow-glow-accent: 0 0 20px var(--color-accent-glow);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Glass effect */
+  --glass-blur: blur(16px);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Embed mode — transparent background */
+body.embed-mode {
+  background: transparent;
+  min-height: auto;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.embed-mode #root {
+  min-height: auto;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px var(--color-primary-glow);
+  filter: brightness(1.1);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  color: var(--color-text-primary);
+  border: var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+}
+
+.btn-secondary:hover {
+  background: var(--color-bg-glass-hover);
+  border-color: var(--color-border-active);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--color-accent), #0099cc);
+  color: #0a0a1a;
+  font-weight: 700;
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.btn-accent:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px var(--color-accent-glow);
+  filter: brightness(1.1);
+}
+
+.btn-lg {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-md);
+  border-radius: var(--radius-lg);
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-md);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ---- Glass Card ---- */
+.glass-card {
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: var(--glass-blur);
+  padding: var(--space-lg);
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--color-primary-glow);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--color-primary-glow), 0 0 60px rgba(124, 92, 252, 0.1);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-slow) ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale var(--transition-slow) ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp var(--transition-slow) ease-out;
+}
+
+/* ---- Step Indicator ---- */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) 0;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-text-muted);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.step-dot.active {
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary-glow);
+  transform: scale(1.3);
+}
+
+.step-dot.completed {
+  background: var(--color-success);
+}
+
+.step-connector {
+  width: 40px;
+  height: 2px;
+  background: var(--color-text-muted);
+  transition: background var(--transition-normal);
+}
+
+.step-connector.active {
+  background: linear-gradient(90deg, var(--color-success), var(--color-primary));
+}
+
+/* ---- Loading Spinner ---- */
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.spinner-lg {
+  width: 48px;
+  height: 48px;
+  border-width: 4px;
+}
+
+/* ---- Skeleton ---- */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-bg-card) 25%, var(--color-bg-card-hover) 50%, var(--color-bg-card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ---- Utilities ---- */
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: var(--color-text-secondary);
+}
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+
+/* ---- App Layout ---- */
+.app-container {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.embed-mode .app-container {
+  min-height: auto;
+  padding: var(--space-md);
+}
+
+.app-header {
+  text-align: center;
+  padding: var(--space-xl) 0 var(--space-lg);
+  animation: fadeIn 0.6s ease-out;
+}
+
+body.embed-mode .app-header {
+  padding: var(--space-md) 0 var(--space-sm);
+}
+
+.app-header h1 {
+  font-size: var(--font-size-2xl);
+  background: linear-gradient(135deg, var(--color-text-primary), var(--color-primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.embed-mode .app-header h1 {
+  font-size: var(--font-size-xl);
+}
+
+.app-header p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Background decorations ---- */
+.bg-decoration {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-orb-1 {
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.bg-orb-2 {
+  bottom: -150px;
+  left: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+body.embed-mode .bg-decoration {
+  display: none;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .app-container {
+    padding: var(--space-md);
+  }
+
+  .app-header h1 {
+    font-size: var(--font-size-xl);
+  }
+
+  .btn-lg {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-sm);
+  }
+}
