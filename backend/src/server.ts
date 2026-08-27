@@ -30,6 +30,12 @@ async function buildApp() {
         return;
       }
 
+      // Permitir a própria URL pública da aplicação
+      if (config.publicBaseUrl && origin.startsWith(config.publicBaseUrl)) {
+        cb(null, true);
+        return;
+      }
+
       // Verificar se a origin está na lista de permitidos
       if (config.allowedEmbedOrigins.includes(origin)) {
         cb(null, true);
