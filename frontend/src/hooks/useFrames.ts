@@ -18,28 +18,28 @@ interface UseFramesReturn {
 const MOCK_FRAMES: Frame[] = [
   {
     id: 'mock-round-01',
-    label: 'Campanha Verão',
+    label: 'Time Sonia e Lula',
     shape: 'round',
     image: '/mock-frames/frame-round.svg',
     thumbnail: '/mock-frames/frame-round.svg',
   },
   {
     id: 'mock-square-01',
-    label: 'Evento Tech',
+    label: 'Time Sonia e Lula',
     shape: 'square',
     image: '/mock-frames/frame-square.svg',
     thumbnail: '/mock-frames/frame-square.svg',
   },
   {
     id: 'mock-round-02',
-    label: 'Pride Month',
+    label: 'Time Sonia e Lula',
     shape: 'round',
     image: '/mock-frames/frame-round.svg', // Reusing
     thumbnail: '/mock-frames/frame-round.svg',
   },
   {
     id: 'mock-square-02',
-    label: 'Hackathon 2025',
+    label: 'Time Sonia e Lula',
     shape: 'square',
     image: '/mock-frames/frame-square.svg', // Reusing
     thumbnail: '/mock-frames/frame-square.svg',
