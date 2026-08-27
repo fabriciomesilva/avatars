@@ -4,13 +4,13 @@ services:
     image: avatar-app:latest
     restart: unless-stopped
     ports:
-      - "5580:5580"
+      - "3000:3000"
     env_file:
       - .env
     volumes:
       - frames-cache:/app/cache/frames
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:5580/api/health"]
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/api/health"]
       interval: 30s
       timeout: 5s
       retries: 3

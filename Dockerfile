@@ -53,11 +53,11 @@ USER appuser
 
 # Healthcheck
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
-  CMD wget -qO- http://127.0.0.1:5580/api/health || exit 1
+  CMD wget -qO- http://127.0.0.1:3000/api/health || exit 1
 
-EXPOSE 5580
+EXPOSE 3000
 
 ENV NODE_ENV=production
-ENV PORT=5580
+ENV PORT=3000
 
 CMD ["node", "dist/server.js"]
