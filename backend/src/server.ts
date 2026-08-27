@@ -75,8 +75,6 @@ async function buildApp() {
     await app.register(fastifyStatic, {
       root: publicDir,
       prefix: '/',
-      wildcard: false,
-      decorateReply: false,
     });
 
     // SPA fallback: redirecionar todas as rotas não-API para index.html
