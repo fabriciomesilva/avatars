@@ -27,7 +27,7 @@ export default function FrameSelector({
           Escolha sua moldura
         </h2>
         <div className="frame-grid">
-          {[1, 2, 3, 4].map((i) => (
+          {Array.from({ length: 8 }, (_, i) => i + 1).map((i) => (
             <div key={i} className="frame-card-skeleton skeleton" />
           ))}
         </div>

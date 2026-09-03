@@ -63,11 +63,10 @@ export function useFrames(): UseFramesReturn {
       }
 
       const data = await response.json();
-      if (data.frames && data.frames.length > 0) {
-        setFrames(data.frames);
-      } else {
-        setFrames(MOCK_FRAMES);
-      }
+      // Usar sempre os dados da API quando a chamada teve sucesso,
+      // independentemente de quantas molduras retornaram.
+      // Os MOCK_FRAMES só são usados em caso de erro de rede.
+      setFrames(Array.isArray(data.frames) ? data.frames : []);
     } catch (err) {
       console.error('Erro ao carregar molduras:', err);
       setError(err instanceof Error ? err.message : 'Erro desconhecido');
