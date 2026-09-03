@@ -12,7 +12,7 @@ export async function composeAvatar(
   shape: 'round' | 'square',
   maxResolution: number = 2048
 ): Promise<Blob> {
-  // Determinar tamanho do canvas (usar o menor entre a moldura e maxResolution)
+  // Para SVGs, naturalWidth/Height pode ser 0 — usar width/height do elemento como fallback
   const frameWidth = frameImage.naturalWidth || frameImage.width || 1080;
   const frameHeight = frameImage.naturalHeight || frameImage.height || 1080;
   const size = Math.min(Math.max(frameWidth, frameHeight), maxResolution) || 1080;
@@ -99,12 +99,14 @@ export async function copyImageToClipboard(blob: Blob): Promise<boolean> {
 }
 
 /**
- * Carrega uma imagem a partir de uma URL e retorna um HTMLImageElement
+ * Carrega uma imagem a partir de uma URL e retorna um HTMLImageElement.
+ * Para SVGs sem dimensões intrínsecas, define width/height antes de carregar
+ * para garantir que naturalWidth/naturalHeight não fiquem zerados.
  */
-export function loadImage(src: string): Promise<HTMLImageElement> {
+export function loadImage(src: string, fallbackSize: number = 1080): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
-    
+
     try {
       const url = new URL(src, window.location.href);
       if (url.origin !== window.location.origin && url.protocol.startsWith('http')) {
@@ -113,9 +115,26 @@ export function loadImage(src: string): Promise<HTMLImageElement> {
     } catch (e) {
       // Ignore error
     }
-    
-    img.onload = () => resolve(img);
+
+    const isSvg = src.includes('.svg') || src.includes('image/svg');
+
+    img.onload = () => {
+      // Se for SVG e naturalWidth ainda for 0 após carregado,
+      // forçar tamanho via atributos para rasterização correta
+      if (isSvg && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
+        img.width = fallbackSize;
+        img.height = fallbackSize;
+      }
+      resolve(img);
+    };
     img.onerror = () => reject(new Error(`Falha ao carregar imagem: ${src}`));
+
+    // Para SVGs, definir dimensões antes do src evita naturalWidth=0 em alguns browsers
+    if (isSvg) {
+      img.width = fallbackSize;
+      img.height = fallbackSize;
+    }
+
     img.src = src;
   });
 }

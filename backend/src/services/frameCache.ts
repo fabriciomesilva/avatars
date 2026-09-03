@@ -103,7 +103,7 @@ export async function fetchFrameImage(
 
     // 4. Salvar em cache no disco
     const cacheDir = getCacheDir();
-    const ext = contentType.includes('png') ? '.png' : contentType.includes('webp') ? '.webp' : '.jpg';
+    const ext = contentType.includes('svg') ? '.svg' : contentType.includes('png') ? '.png' : contentType.includes('webp') ? '.webp' : '.jpg';
     const filePath = path.join(cacheDir, `${cacheKey}${ext}`);
 
     fs.writeFileSync(filePath, buffer);

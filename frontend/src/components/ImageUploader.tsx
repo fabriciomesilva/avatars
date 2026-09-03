@@ -211,7 +211,7 @@ export default function ImageUploader({ onImageSelected, maxSizeMb = 8 }: ImageU
         <p className="upload-text">
           <strong>Clique para selecionar</strong> ou arraste sua foto aqui
         </p>
-        <p className="upload-hint">PNG, JPG, WebP • Máximo {maxSizeMb}MB</p>
+        <p className="upload-hint">PNG, JPG, WebP, SVG • Máximo {maxSizeMb}MB</p>
       </div>
 
       <div className="upload-divider">
